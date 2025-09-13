@@ -1,9 +1,11 @@
-import { Hero } from "@/components/shared/Hero"
+import LandingPage from "./landing/page"
+
+
 
 export default function HomePage() {
   return (
     <>
-      <Hero />
+      <LandingPage />
       {/* بخش‌های بعدی مثل خدمات یا مقالات اینجا اضافه میشه */}
     </>
   )
