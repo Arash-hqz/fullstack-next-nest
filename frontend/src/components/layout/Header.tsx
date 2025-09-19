@@ -15,7 +15,7 @@ export function Header() {
         </Link>
 
         {/* Navigation */}
-        <nav className="hidden md:flex gap-8 text-neutral-700 font-medium relative right-[250px] top-[15px]">
+        <nav className="hidden md:flex gap-8 text-neutral-700 font-medium relative right-[22%] top-[25%]">
           {[
             { title: "سرویس ها", href: "/services", submenu: [
               { label: "طراحی", href: "/services/design", desc: "Industrial design" },
@@ -43,7 +43,7 @@ export function Header() {
                 className="hover:text-red-600 transition relative"
               >
                 {item.title}
-                <span className="absolute left-0 -bottom-2 h-[10%] w-0 bg-red-600 transition-all duration-300 group-hover:w-[111%]"></span>
+                <span className="absolute left-0 -bottom-[9px] h-[10%] w-0 bg-red-600 transition-all duration-300 group-hover:w-[111%]"></span>
               </Link>
 
               {/* dropdown */}
@@ -75,11 +75,11 @@ export function Header() {
           <nav className="hidden md:flex gap-6">
             <Link href="/about" className="hover:text-red-600 transition relative group">
               درباره ما
-              <span className="absolute left-0 -bottom-2 h-[3px] w-0 bg-red-600 transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute left-0 -bottom-9 h-[22%] w-0 bg-red-600 transition-all duration-300 group-hover:w-[111%]"></span>
             </Link>
             <Link href="/pricing" className="hover:text-red-600 transition relative group">
-              محاسبات 
-              <span className="absolute left-0 -bottom-2 h-[3px] w-0 bg-red-600 transition-all duration-300 group-hover:w-full"></span>
+              محاسبات
+              <span className="absolute left-0 -bottom-9 h-[22%] w-0 bg-red-600 transition-all duration-300 group-hover:w-[111%]"></span>
             </Link>
           </nav>
           <button className="text-gray-600 hover:text-red-600">🔍</button>
