@@ -6,7 +6,7 @@ import { use, useState } from "react"
 export function Header() {
    const [openMenu, setOpenMenu] = useState<string | null>(null)
   return (
-     <header className="bg-white shadow-md shadow-red-800 sticky top-0 z-50 h-[85px]">
+     <header dir="ltr" className="bg-white shadow-md shadow-red-800 sticky top-0 z-50 h-[85px]">
       <div className="container mx-auto flex items-center justify-between py-4 px-6">
         
         {/* Logo */}
@@ -15,7 +15,7 @@ export function Header() {
         </Link>
 
         {/* Navigation */}
-        <nav className="hidden md:flex gap-8 text-neutral-700 font-medium relative right-[22%] top-[25%]">
+        <nav className="hidden md:flex gap-8 text-neutral-700 font-medium relative right-[25px] top-[15px]">
           {[
             { title: "سرویس ها", href: "/services", submenu: [
               { label: "طراحی", href: "/services/design", desc: "Industrial design" },
@@ -28,6 +28,16 @@ export function Header() {
             { title: "اخرین اخبار", href: "/articles" , submenu: [
               { label: "اخرین خبر A", href: "/projects/1" , desc: "Industrial design" },
               { label: "اخرین خبر B", href: "/projects/2" , desc: "Industrial design" }
+
+            ]},
+            { title: "محاسبات", href: "/pricing" , submenu: [
+              { label: "محاسبه A", href: "/projects/1" , desc: "Industrial design" },
+              { label: "محاسبه B", href: "/projects/2" , desc: "Industrial design" }
+
+            ]},
+             { title: "درباره ما", href: "/about" , submenu: [
+              { label: " ما گروهی حرفه ای از مهندسین و پیمانکاران هستیم برای اراِه محصولات صنعتی و ساخت نیروگاه برقی از صفر تا صد ",href: "" , desc: "" },
+              
 
             ]}
           ].map((item) => (
@@ -48,6 +58,7 @@ export function Header() {
 
               {/* dropdown */}
               <div
+                dir="rtl"
                 className={`absolute top-full left-0 mt-3 w-64 bg-white shadow-lg rounded-lg p-4 z-50
                 transition-all duration-300 origin-top
                 ${openMenu === item.title 
@@ -72,16 +83,7 @@ export function Header() {
 
         {/* Search / Language */}
         <div className="flex items-center gap-6">
-          <nav className="hidden md:flex gap-6">
-            <Link href="/about" className="hover:text-red-600 transition relative group">
-              درباره ما
-              <span className="absolute left-0 -bottom-9 h-[22%] w-0 bg-red-600 transition-all duration-300 group-hover:w-[111%]"></span>
-            </Link>
-            <Link href="/pricing" className="hover:text-red-600 transition relative group">
-              محاسبات
-              <span className="absolute left-0 -bottom-9 h-[22%] w-0 bg-red-600 transition-all duration-300 group-hover:w-[111%]"></span>
-            </Link>
-          </nav>
+          
           <button className="text-gray-600 hover:text-red-600">🔍</button>
           <button className="text-gray-600 hover:text-red-600">EN</button>
         </div>
