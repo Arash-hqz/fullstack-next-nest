@@ -98,13 +98,13 @@ export function Header() {
 
         {/* دکمه همبرگر برای موبایل */}
           <button
-            className="md:hidden text-gray-700 cursor-pointer transition-transform duration-300"
+            className="md:hidden text-gray-700 cursor-pointer transition-transform duration-300 absolute right-[9%] bg-[#f0f0f0]"
             onClick={() => setMobileOpen(!mobileOpen)}
           >
             {mobileOpen ? (
               <X size={28} className="hover:rotate-180 transition-transform duration-300" />
             ) : (
-              <Menu size={28} className="hover:rotate-180 transition-transform duration-300" />
+              <Menu size={28} className="hover:rotate-90 transition-transform duration-300" />
             )}
           </button>
 
