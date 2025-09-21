@@ -27,7 +27,7 @@ function Hero() {
           href="/services"
           className="px-6 py-3 bg-red-600 hover:bg-red-700 rounded-lg font-medium transition"
         >
-          جستجوی خدمات ما
+          شروع همکاری
         </Link>
       </div>
     </section>

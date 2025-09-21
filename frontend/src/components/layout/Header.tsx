@@ -2,11 +2,13 @@
 import Link from "next/link"
 import Image from "next/image"
 import { use, useState } from "react"
+import { SearchBar } from "../shared/searchBar"
+
 
 export function Header() {
    const [openMenu, setOpenMenu] = useState<string | null>(null)
   return (
-     <header dir="ltr" className="bg-white shadow-md shadow-red-800 sticky top-0 z-50 h-[85px]">
+     <header dir="ltr" className="bg-[#f0f0f0] shadow-md shadow-red-800 sticky top-0 z-50 h-[85px] ">
       <div className="container mx-auto flex items-center justify-between py-4 px-6">
         
         {/* Logo */}
@@ -15,7 +17,7 @@ export function Header() {
         </Link>
 
         {/* Navigation */}
-        <nav className="hidden md:flex gap-8 text-neutral-700 font-medium relative right-[25px] top-[15px]">
+        <nav className="hidden md:flex gap-8 text-neutral-700 font-medium relative left-[49px] top-[15px]">
           {[
             { title: "سرویس ها", href: "/services", submenu: [
               { label: "طراحی", href: "/services/design", desc: "Industrial design" },
@@ -82,10 +84,10 @@ export function Header() {
         </nav>
 
         {/* Search / Language */}
-        <div className="flex items-center gap-6">
+        <div dir="rtl" className="flex items-center gap-3 w-[20%]">
           
-          <button className="text-gray-600 hover:text-red-600">🔍</button>
           <button className="text-gray-600 hover:text-red-600">EN</button>
+          <SearchBar />
         </div>
       </div>
     </header>
