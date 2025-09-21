@@ -9,6 +9,40 @@ import { Menu, X } from "lucide-react"
 export function Header() {
   const [openMenu, setOpenMenu] = useState<string | null>(null)
   const [mobileOpen, setMobileOpen] = useState(false)
+  
+   const navItems = [
+   {
+      title: " محصولات ",
+      href: "/products",
+      submenu: [{ label: " محصولات ما ",href: "" , desc: "" }  ],
+    },
+    {
+      title: "سرویس ها",
+      href: "/services",
+      submenu: [{ label: " سرویس ها و خدماتی ک ما ارائه میدیم به شما ",href: "" , desc: "" }  ],
+    },
+    {
+      title: "پروژه ها",
+      href: "/projects",
+      submenu: [{ label: "نمونه پروژه های انجام شده", href: "" , desc: "" }],
+    },
+    {
+      title: "آخرین اخبار",
+      href: "/articles",
+      submenu: [{ label: "اخبار و حواشی صنعت و تکنولوژی", href: "" , desc: "" }],
+    },
+    {
+      title: "محاسبات",
+      href: "/pricing",
+      submenu: [{ label: "محاسبات و برآورد هزینه‌ها", href: "" , desc: "" }],
+    },
+    {
+      title: "درباره ما",
+      href: "/about",
+      submenu: [{ label: "ما گروهی حرفه ای از مهندسین و پیمانکاران هستیم برای اراِه محصولات صنعتی و ساخت نیروگاه برقی از صفر تا صد ", href: "" , desc: "" }],
+    },
+  ]
+
   return (
      <header dir="ltr" className="bg-[#f0f0f0] shadow-md shadow-red-800 sticky top-0 z-50 h-[85px] ">
       <div className="container mx-auto flex items-center justify-between py-4 px-6">
@@ -20,28 +54,7 @@ export function Header() {
 
         {/* Navigation */}
         <nav className="hidden md:flex gap-8 text-neutral-700 font-medium relative left-[49px] top-[15px]">
-          {[
-            { title: "سرویس ها", href: "/services", submenu: [
-              { label: " سرویس ها و خدماتی ک ما ارائه میدیم به شما ",href: "" , desc: "" },
-
-            ] },
-            { title: "پروژه ها", href: "/projects", submenu: [
-               { label: " نمونه پروژه هایه انجام شده",href: "" , desc: "" },
-
-            ] },
-            { title: "اخرین اخبار", href: "/articles" , submenu: [
-              { label: " اخبار و حواشی دنیای صنعت و تکنولوژی ",href: "" , desc: "" },
-
-            ]},
-            { title: "محاسبات", href: "/pricing" , submenu: [
-              { label: "  محاسبات و برآورد هزینه ها برای ساخت نیروگاه", href: "" , desc: "" },
-            ]},
-             { title: "درباره ما", href: "/about" , submenu: [
-              { label: " ما گروهی حرفه ای از مهندسین و پیمانکاران هستیم برای اراِه محصولات صنعتی و ساخت نیروگاه برقی از صفر تا صد ",href: "" , desc: "" },
-              
-
-            ]}
-          ].map((item) => (
+          {navItems.map((item) => (
             <div
               key={item.title}
               className="relative group h-[45px] flex flex-wrap"
@@ -117,19 +130,22 @@ export function Header() {
             ${mobileOpen ? "translate-x-0" : "translate-x-full"}
           `}
         >
-          {[
-            { title: "سرویس ها", href: "/services" },
-            { title: "پروژه ها", href: "/projects" },
-            { title: "اخرین اخبار", href: "/articles" },
-            { title: "محاسبات", href: "/pricing" },
-            { title: "درباره ما", href: "/about" },
-          ].map((item) => (
+          {navItems.map((item) => (
             <Link
               key={item.title}
               href={item.href}
-              className="p-2 rounded-md hover:bg-gray-100 transition-transform duration-300 hover:rotate-180"
+              className="p-2 rounded-md hover:bg-gray-100 transition-transform "
             >
               {item.title}
+              {item.submenu?.map((sub, idx) => (
+                <div 
+                  className=" p-2 border-[#f4482aa4] border-2 rounded-xl"
+                  key={idx}
+                >
+                  <p className="font-medium text-sm text-neutral-800 ">{sub.label}</p>
+                  {sub.desc && <p className="text-xs text-neutral-500">{sub.desc}</p>}
+                </div>
+              ))}
             </Link>
           ))}
         </div>
