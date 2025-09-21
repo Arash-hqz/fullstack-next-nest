@@ -3,10 +3,12 @@ import Link from "next/link"
 import Image from "next/image"
 import { use, useState } from "react"
 import { SearchBar } from "../shared/searchBar"
+import { Menu, X } from "lucide-react" 
 
 
 export function Header() {
-   const [openMenu, setOpenMenu] = useState<string | null>(null)
+  const [openMenu, setOpenMenu] = useState<string | null>(null)
+  const [mobileOpen, setMobileOpen] = useState(false)
   return (
      <header dir="ltr" className="bg-[#f0f0f0] shadow-md shadow-red-800 sticky top-0 z-50 h-[85px] ">
       <div className="container mx-auto flex items-center justify-between py-4 px-6">
@@ -78,7 +80,21 @@ export function Header() {
               </div>
             </div>
           ))}
+
         </nav>
+
+        {/* دکمه همبرگر برای موبایل */}
+          <button
+            className="md:hidden text-gray-700 cursor-pointer transition-transform duration-300"
+            onClick={() => setMobileOpen(!mobileOpen)}
+          >
+            {mobileOpen ? (
+              <X size={28} className="hover:rotate-180 transition-transform duration-300" />
+            ) : (
+              <Menu size={28} className="hover:rotate-180 transition-transform duration-300" />
+            )}
+          </button>
+
 
         {/* Search / Language */}
         <div dir="rtl" className="flex items-center gap-3 w-[20%]">
@@ -86,6 +102,39 @@ export function Header() {
           <button className="text-gray-600 hover:text-red-600">EN</button>
           <SearchBar />
         </div>
+        {/* بک‌دراپ */}
+        {mobileOpen && (
+          <div
+            className="fixed inset-0 bg-black/40 z-40"
+            onClick={() => setMobileOpen(false)}
+          />
+        )}
+        {/* منوی موبایل */}
+        <div
+          dir="rtl"
+          className={`fixed top-0 right-0 w-64 h-full bg-white shadow-lg z-50 p-6 flex flex-col gap-4
+            transform transition-transform duration-300
+            ${mobileOpen ? "translate-x-0" : "translate-x-full"}
+          `}
+        >
+          {[
+            { title: "سرویس ها", href: "/services" },
+            { title: "پروژه ها", href: "/projects" },
+            { title: "اخرین اخبار", href: "/articles" },
+            { title: "محاسبات", href: "/pricing" },
+            { title: "درباره ما", href: "/about" },
+          ].map((item) => (
+            <Link
+              key={item.title}
+              href={item.href}
+              className="p-2 rounded-md hover:bg-gray-100 transition-transform duration-300 hover:rotate-180"
+            >
+              {item.title}
+            </Link>
+          ))}
+        </div>
+
+
       </div>
     </header>
   )
