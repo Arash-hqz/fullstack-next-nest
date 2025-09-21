@@ -20,22 +20,19 @@ export function Header() {
         <nav className="hidden md:flex gap-8 text-neutral-700 font-medium relative left-[49px] top-[15px]">
           {[
             { title: "سرویس ها", href: "/services", submenu: [
-              { label: "طراحی", href: "/services/design", desc: "Industrial design" },
-              { label: "نصب", href: "/services/install", desc: "Full setup" }
+              { label: " سرویس ها و خدماتی ک ما ارائه میدیم به شما ",href: "" , desc: "" },
+
             ] },
             { title: "پروژه ها", href: "/projects", submenu: [
-              { label: "پروژه A", href: "/projects/1" , desc: "Industrial design" },
-              { label: "پروژه B", href: "/projects/2" , desc: "Industrial design" }
+               { label: " نمونه پروژه هایه انجام شده",href: "" , desc: "" },
+
             ] },
             { title: "اخرین اخبار", href: "/articles" , submenu: [
-              { label: "اخرین خبر A", href: "/projects/1" , desc: "Industrial design" },
-              { label: "اخرین خبر B", href: "/projects/2" , desc: "Industrial design" }
+              { label: " اخبار و حواشی دنیای صنعت و تکنولوژی ",href: "" , desc: "" },
 
             ]},
             { title: "محاسبات", href: "/pricing" , submenu: [
-              { label: "محاسبه A", href: "/projects/1" , desc: "Industrial design" },
-              { label: "محاسبه B", href: "/projects/2" , desc: "Industrial design" }
-
+              { label: "  محاسبات و برآورد هزینه ها برای ساخت نیروگاه", href: "" , desc: "" },
             ]},
              { title: "درباره ما", href: "/about" , submenu: [
               { label: " ما گروهی حرفه ای از مهندسین و پیمانکاران هستیم برای اراِه محصولات صنعتی و ساخت نیروگاه برقی از صفر تا صد ",href: "" , desc: "" },
@@ -72,9 +69,9 @@ export function Header() {
                   <Link
                     key={idx}
                     href={sub.href}
-                    className="block p-2 hover:bg-neutral-100 rounded-md"
+                    className="block p-2 hover:bg-neutral-100 border-[#f4482aa4] border-2 rounded-xl"
                   >
-                    <p className="font-medium text-sm text-neutral-800">{sub.label}</p>
+                    <p className="font-medium text-sm text-neutral-800 ">{sub.label}</p>
                     {sub.desc && <p className="text-xs text-neutral-500">{sub.desc}</p>}
                   </Link>
                 ))}
