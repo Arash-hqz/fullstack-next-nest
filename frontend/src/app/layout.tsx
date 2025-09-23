@@ -1,13 +1,13 @@
-import "./globals.css"
-import type { Metadata } from "next"
-import { ReactNode } from "react"
-import { Header } from "@/components/layout/Header"
-import { Footer } from "@/components/layout/Footer"
+import "./globals.css";
+import type { Metadata } from "next";
+import { ReactNode } from "react";
+import { Header } from "@/components/layout/header/Header";
+import { Footer } from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
   title: "Fatahi Project",
   description: "Industrial company website built with Next.js",
-}
+};
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -18,5 +18,5 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Footer />
       </body>
     </html>
-  )
+  );
 }
