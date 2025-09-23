@@ -91,7 +91,7 @@ export default function PricePanel({ refreshInterval = 60000, apiEndpoints = {},
 
       // Gold (example) - if endpoint provided use it; otherwise mock using placeholder API (some providers need key)
       if (apiEndpoints.gold) {
-        const r = await fetch(apiEndpoints.gold)
+        const r = await fetch("https://metals-api.com/api/latest?access_key=YOUR_API_KEY&base=USD&symbols=XAU")
         const d = await r.json()
         // adapt according to returned structure
         next.find(a => a.key === "gold")!.value = Number(d.price ?? d?.gold?.price ?? null)
@@ -102,7 +102,7 @@ export default function PricePanel({ refreshInterval = 60000, apiEndpoints = {},
 
       // Oil (Brent) - sample fallback mock or public API if provided
       if (apiEndpoints.oil) {
-        const r = await fetch(apiEndpoints.oil)
+        const r = await fetch("https://www.quandl.com/api/v3/datasets/OPEC/ORB.json?api_key=YOUR_API_KEY")
         const d = await r.json()
         next.find(a => a.key === "oil")!.value = Number(d.price ?? d?.brent?.price ?? null)
       } else {
@@ -111,7 +111,7 @@ export default function PricePanel({ refreshInterval = 60000, apiEndpoints = {},
 
       // Gas - mock or endpoint
       if (apiEndpoints.gas) {
-        const r = await fetch(apiEndpoints.gas)
+        const r = await fetch("https://www.quandl.com/api/v3/datasets/CHRIS/CME_NG1.json?api_key=YOUR_API_KEY")
         const d = await r.json()
         next.find(a => a.key === "gas")!.value = Number(d.price ?? d?.gas?.price ?? null)
       } else {
@@ -120,7 +120,7 @@ export default function PricePanel({ refreshInterval = 60000, apiEndpoints = {},
 
       // Electricity: این مورد محلیه — اغلب باید از دیتابیس یا API شرکتی بیاد. اگر provided use it، وگرنه mock بر اساس IRR/kWh
       if (apiEndpoints.electricity) {
-        const r = await fetch(apiEndpoints.electricity)
+        const r = await fetch("https://metals-api.com/api/latest?access_key=YOUR_API_KEY&base=USD&symbols=ELEC")
         const d = await r.json()
         next.find(a => a.key === "electricity")!.value = Number(d.price ?? d?.tariff ?? null)
       } else {
@@ -146,7 +146,7 @@ export default function PricePanel({ refreshInterval = 60000, apiEndpoints = {},
   }, [refreshInterval, JSON.stringify(apiEndpoints)])
 
   return (
-    <div className={`w-full ${className}`}>
+    <div className={`w-full pt-10 ${className}`}>
       <div className="bg-white rounded-2xl p-4 shadow-md border border-neutral-100">
         <div className="flex items-center justify-between mb-3">
           <h4 className="text-sm font-semibold">قیمت‌های لحظه‌ای</h4>

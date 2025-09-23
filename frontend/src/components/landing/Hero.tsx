@@ -1,7 +1,8 @@
 import Image from "next/image"
 import { IMAGES } from "@/lib/images"
 import Link from "next/link"
-function Hero() {
+
+export function Hero() {
   return (
     <section className="relative h-[80vh] flex items-center justify-center bg-gray-900 text-white rounded-xl overflow-hidden mx-6 md:mx-0">
       <Image
