@@ -45,15 +45,15 @@ export function Header() {
 
   return (
      <header dir="ltr" className="bg-[#f0f0f0] shadow-md shadow-red-800 sticky top-0 z-50 h-[85px] ">
-      <div className="container mx-auto flex items-center justify-between py-4 px-6">
-        
+      <div className=" relative mx-auto flex items-center justify-between py-4 px-6">
+
         {/* Logo */}
-        <Link href="/" className="relative right-8">
+        <Link href="/" className="relative right-[-36px] max-sm:right-1 w-16 ">
           <Image src="/logo.png" alt="Company Logo" width={120} height={40} />
         </Link>
 
         {/* Navigation */}
-        <nav className="hidden md:flex gap-8 text-neutral-700 font-medium relative left-[49px] top-[15px]">
+        <nav className="hidden lg:flex  gap-8 text-neutral-700 font-medium relative top-[15px]">
           {navItems.map((item) => (
             <div
               key={item.title}
@@ -96,9 +96,16 @@ export function Header() {
 
         </nav>
 
-        {/* دکمه همبرگر برای موبایل */}
+        
+
+        {/* Search / Language */}
+
+        
+
+        <div dir="rtl" className="flex items-center gap-3 w-[20%] relative right-[36px] max-xl:right-2 ">
+          {/* دکمه همبرگر برای موبایل */}
           <button
-            className="md:hidden text-gray-700 cursor-pointer transition-transform duration-300 absolute right-[9%] bg-[#f0f0f0]"
+            className=" lg:hidden text-gray-700 cursor-pointer transition-transform duration-300   bg-[#f0f0f0]"
             onClick={() => setMobileOpen(!mobileOpen)}
           >
             {mobileOpen ? (
@@ -107,12 +114,7 @@ export function Header() {
               <Menu size={28} className="hover:rotate-90 transition-transform duration-300" />
             )}
           </button>
-
-
-        {/* Search / Language */}
-        <div dir="rtl" className="flex items-center gap-3 w-[20%]">
-          
-          <button className="text-gray-600 hover:text-red-600">EN</button>
+          <button className="text-gray-600 hover:text-red-600 max-lg:hidden">EN</button>
           <SearchBar />
         </div>
         {/* بک‌دراپ */}

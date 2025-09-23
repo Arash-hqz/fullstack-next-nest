@@ -59,10 +59,11 @@ export function SearchBar() {
   }
 
   return (
-    <div dir="rtl" ref={containerRef} className="flex flex-col items-center gap-4 pt-1.5">
+    <div dir="rtl" ref={containerRef} className="flex flex-col items-center gap-4 pt-1.5 max-lg:w-[300%] max-lg:absolute right-[80%]">
       {/* سرچ بار */}
       <div
         className={`flex items-center transition-all duration-300 border rounded-full overflow-hidden cursor-pointer
+          max-lg:w-full
           ${
             expanded
               ? "w-[200px] h-8 border-red-500 px-3"
@@ -91,7 +92,7 @@ export function SearchBar() {
             className="flex-1 outline-none text-sm px-2"
           />
         ) : (
-          <Search className="text-gray-600 h-5" />
+          <Search className="text-gray-600 h-5 max-lg:absolute right-[2%]"  />
         )}
       </div>
 
