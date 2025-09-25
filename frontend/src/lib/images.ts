@@ -1,11 +1,14 @@
 import hero from "../../public/image/hero.jpg"
+import install from "../../public/image/instalition.jpg";
+import design from "../../public/image/tarh.png";
+import maintenance from "../../public/image/maintenance.png";
 export const IMAGES = {
   hero: hero,
   logo: "/images/logo.png",
   services: {
-    design: "/images/services/design.jpg",
-    install: "/images/services/install.jpg",
-    maintenance: "/images/services/maintenance.jpg",
+    design: design,
+    install: install,
+    maintenance: maintenance,
   },
   projects: {
     project1: "/images/projects/project1.jpg",

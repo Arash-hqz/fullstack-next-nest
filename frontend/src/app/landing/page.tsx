@@ -4,6 +4,7 @@ import  PricePanel  from "@/components/landing/PricePanel"
 import { Projects } from "@/components/landing/Project"
 import { Articles } from "@/components/landing/Articles"
 import { FinalCTA } from "@/components/landing/finalCTA"
+import Prouduct from "@/components/landing/Prouduct"
 
 export default function LandingPage() {
   return (
@@ -11,7 +12,8 @@ export default function LandingPage() {
       <Hero />
       <PricePanel />
       <Services />
-      <Projects />
+      <Prouduct />
+      {/* <Projects /> */}
       <Articles />
       <FinalCTA />
     </>

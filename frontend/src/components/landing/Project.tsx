@@ -8,7 +8,7 @@ export function Projects() {
   ]
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 ">
       <div className="container mx-auto px-6">
         <h2 className="text-3xl font-bold text-center mb-12">Featured Projects</h2>
         <div className="grid md:grid-cols-3 gap-8">
