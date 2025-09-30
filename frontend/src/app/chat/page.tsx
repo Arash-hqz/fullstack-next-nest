@@ -1,9 +1,6 @@
-import { PageContainer } from "@/components/layout/PageContainer"
+"use client"
+import ChatPage from "@/components/chat/ChatPage"
 
-export default function ChatPage() {
-  return (
-    <PageContainer title="پشتیبانی آنلاین" subtitle="با تیم ما به صورت مستقیم در ارتباط باشید">
-      {/* بعداً UI چت اینجا میاد */}
-    </PageContainer>
-  )
+export default function Chat() {
+  return <ChatPage />
 }
