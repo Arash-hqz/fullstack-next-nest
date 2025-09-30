@@ -11,19 +11,25 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card/Card"
-import { Input } from "@/components/ui/input/input"
-import { Label } from "@/components/ui/label"
-import { Mail, Phone, Lock, User, ArrowLeftRight } from "lucide-react" // آیکون‌ها
+import { Lock, User, ArrowLeftRight } from "lucide-react"
+
+// Steps
+import { LoginStep } from "./steps/LoginStep"
+import { RegisterStep } from "./steps/RegisterStep"
+import { ForgotStep } from "./steps/ForgotStep"
 
 type Step = "login" | "register" | "forgot"
 
 export function AuthWizard() {
   const [step, setStep] = useState<Step>("login")
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log(`ارسال درخواست برای مرحله: ${step}`)
-    // اینجا بعداً API واقعی اضافه میشه
+  const handleSubmit = async (formData: any) => {
+    console.log("📤 ارسال دیتا:", { step, formData })
+    // بعداً اینجا: await fetch("/api/auth", { method: "POST", body: JSON.stringify(formData) })
+  }
+
+  const handleGoogleLogin = () => {
+    console.log("🔗 گوگل لاگین (بعداً API اضافه میشه)")
   }
 
   return (
@@ -53,148 +59,49 @@ export function AuthWizard() {
         </CardHeader>
 
         <CardContent>
-          <form onSubmit={handleSubmit}>
-            <AnimatePresence mode="wait">
-              {step === "login" && (
-                <motion.div
-                  key="login"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.3 }}
-                  className="space-y-4"
-                >
-                  <div className="grid gap-2">
-                    <Label htmlFor="identifier">ایمیل یا شماره موبایل</Label>
-                    <div className="relative">
-                      <Input id="identifier" type="text" required />
-                      <Mail className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
-                    </div>
-                  </div>
-                  <div className="grid gap-2">
-                    <div className="flex items-center justify-between">
-                      <Label htmlFor="password">رمز عبور</Label>
-                      <button
-                        type="button"
-                        onClick={() => setStep("forgot")}
-                        className="text-sm text-blue-600 hover:underline"
-                      >
-                        فراموش کردید؟
-                      </button>
-                    </div>
-                    <div className="relative">
-                      <Input id="password" type="password" required />
-                      <Lock className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-
-              {step === "register" && (
-                <motion.div
-                  key="register"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.3 }}
-                  className="space-y-4"
-                >
-                  <div className="grid gap-2">
-                    <Label htmlFor="fullname">نام و نام خانوادگی</Label>
-                    <div className="relative">
-                      <Input id="fullname" type="text" required />
-                      <User className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
-                    </div>
-                  </div>
-                  <div className="grid gap-2">
-                    <Label htmlFor="identifier">ایمیل یا شماره موبایل</Label>
-                    <div className="relative">
-                      <Input id="identifier" type="text" required />
-                      <Phone className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
-                    </div>
-                  </div>
-                  <div className="grid gap-2">
-                    <Label htmlFor="password">رمز عبور</Label>
-                    <div className="relative">
-                      <Input id="password" type="password" required />
-                      <Lock className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-
-              {step === "forgot" && (
-                <motion.div
-                  key="forgot"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.3 }}
-                  className="space-y-4"
-                >
-                  <div className="grid gap-2">
-                    <Label htmlFor="identifier">ایمیل یا شماره موبایل</Label>
-                    <div className="relative">
-                      <Input id="identifier" type="text" required />
-                      <Mail className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </form>
+          <AnimatePresence mode="wait">
+            {step === "login" && (
+              <motion.div
+                key="login"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+              >
+                <LoginStep onSubmit={handleSubmit} onForgot={() => setStep("forgot")} onSwitch={() => setStep("register")} />
+              </motion.div>
+            )}
+            {step === "register" && (
+              <motion.div
+                key="register"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+              >
+                <RegisterStep onSubmit={handleSubmit} onSwitch={() => setStep("login")} />
+              </motion.div>
+            )}
+            {step === "forgot" && (
+              <motion.div
+                key="forgot"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+              >
+                <ForgotStep onSubmit={handleSubmit} onSwitch={() => setStep("login")} />
+              </motion.div>
+            )}
+          </AnimatePresence>
         </CardContent>
 
         <CardFooter className="flex flex-col gap-3">
-          {step === "login" && (
-            <>
-              <Button type="submit" className="w-full">
-                ورود
-              </Button>
-              <Button
-                type="button"
-                variant="outline"
-                className="w-full"
-                onClick={() => setStep("register")}
-              >
-                ثبت‌نام
-              </Button>
-            </>
-          )}
-
-          {step === "register" && (
-            <>
-              <Button type="submit" className="w-full">
-                ثبت‌نام
-              </Button>
-              <Button
-                type="button"
-                variant="outline"
-                className="w-full"
-                onClick={() => setStep("login")}
-              >
-                بازگشت به ورود
-              </Button>
-            </>
-          )}
-
-          {step === "forgot" && (
-            <>
-              <Button type="submit" className="w-full">
-                ارسال لینک بازیابی
-              </Button>
-              <Button
-                type="button"
-                variant="outline"
-                className="w-full"
-                onClick={() => setStep("login")}
-              >
-                بازگشت به ورود
-              </Button>
-            </>
-          )}
-
-          <Button variant="outline" className="w-full">
+          <Button
+            variant="outline"
+            className="w-full cursor-pointer"
+            onClick={handleGoogleLogin}
+          >
             ورود با گوگل
           </Button>
         </CardFooter>
