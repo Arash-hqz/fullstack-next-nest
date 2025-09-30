@@ -10,7 +10,7 @@ export function HamMenu() {
     <>
       {/* دکمه همبرگر */}
       <button
-        className="lg:hidden text-gray-700 cursor-pointer transition-transform duration-300 bg-[#d1d1d1]"
+        className="lg:hidden text-gray-700 cursor-pointer transition-transform duration-300 bg-[#d1d1d1] max-sm:relative left-6"
         onClick={() => setMobileOpen(!mobileOpen)}
       >
         {mobileOpen ? (
