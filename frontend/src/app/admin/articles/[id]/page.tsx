@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { AdminLayout } from '@/components/admin/Layout'
-import { adminApi } from '@/services/adminApi'
+import { AdminLayout } from '../../../../components/layout/admin/layout'
+import { adminApi } from '../../../services/adminApi'
 import { useRouter } from 'next/navigation'
 
 export default function AdminArticleDetail({ params }: { params: { id: string } }) {
