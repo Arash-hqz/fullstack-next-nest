@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { AdminLayout } from '../layout'
-import { adminApi } from '@/services/adminApi'
+import { AdminLayout } from '../../components/layout/admin/layout'
+import { adminApi } from '../services/adminApi'
 import { BarChart, Bar, ResponsiveContainer, Tooltip } from 'recharts'
 
 export default function AdminHome() {
