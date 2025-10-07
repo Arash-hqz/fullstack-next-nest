@@ -1,10 +1,11 @@
+import Logo from "../../public/image/logo.png"
 import hero from "../../public/image/hero.jpg"
 import install from "../../public/image/instalition.jpg";
 import design from "../../public/image/tarh.png";
 import maintenance from "../../public/image/maintenance.png";
 export const IMAGES = {
   hero: hero,
-  logo: "/images/logo.png",
+  logo: Logo,
   services: {
     design: design,
     install: install,
