@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useEffect, useState } from 'react'
-import { AdminLayout } from '../layout'
+import { AdminLayout } from '../../../components/layout/admin/layout'
 import { adminApi } from '../../services/adminApi'
 import Link from 'next/link'
 
