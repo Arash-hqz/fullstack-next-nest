@@ -1,5 +1,6 @@
+'use client';
 import React from 'react'
-import { AdminLayout } from '../layout'
+import { AdminLayout } from '../../../components/layout/admin/layout'
 
 export default function AdminProjects() {
   return (
